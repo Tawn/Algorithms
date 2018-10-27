@@ -1,6 +1,5 @@
-# Topological Sorting of a Graph is an in-order
-# Sorting algorithm for all paths {(u, v) | u, v in V}
-# u is always before v
+# Topological Sorting of a Graph is an in-order Sorting algorithm
+# {(u, v) | u, v in V s.t. u is always before v}
 # Using a Depth-First search method with stack of array
 
 class Topological_Sort():
