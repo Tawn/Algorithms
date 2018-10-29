@@ -4,6 +4,7 @@ from Longest_Path import *
 from Shortest_Path import *
 from Cycles import *
 from SCC import *
+from Dijkstra import *
 
 def main():
     graph = Graph()
@@ -14,20 +15,21 @@ def main():
     graph.add_vertex("C")
     graph.add_vertex("D")
     graph.add_vertex("E")
-    graph.add_vertex("X")
-    graph.add_vertex("Y")
-    graph.add_vertex("Z")
+
 
     # Edges
-    graph.add_edge("A", "B") 
-    graph.add_edge("B", "C")
-    graph.add_edge("C", "X")
+    graph.add_edge("A", "B")
+    graph.add_edge("A", "C") 
+    graph.add_edge("B", "D")
     graph.add_edge("C", "E")
-    graph.add_edge("D", "B")
-    graph.add_edge("E", "D")
-    graph.add_edge("X", "Y")
-    graph.add_edge("Y", "Z")
-    graph.add_edge("Z", "X")
+    graph.add_edge("D", "C")
+
+    # Edge weights
+    graph.add_weight("A", "B", 5)
+    graph.add_weight("A", "C", 10)
+    graph.add_weight("B", "D", 1)
+    graph.add_weight("C", "E", 1)
+    graph.add_weight("D", "C", 1)
     
     # Cycle
     #graph.add_edge("X", "A")
@@ -45,12 +47,18 @@ def main():
     # Tests the Topological Sorts
     V = graph.get_vertices()
     Adj = graph.get_adjacent()
+    edge_weight = graph.edge_weight
+
+    # Dijkstra's Aglorithm
+    path = Dijkstra_Algorithm(V, Adj, edge_weight)
+    path.dijkstra("A", "E")
+    
     #sort = Topological_Sort()
     #sort.t_sort(V, Adj)
 
     # Strongly Connected Components
-    scc = Strongly_Connected(V, Adj)
-    scc.scc()
+    #scc = Strongly_Connected(V, Adj)
+    #scc.scc()
 
     # Test Longest Path
     #long = Longest_Path(V, Adj)
