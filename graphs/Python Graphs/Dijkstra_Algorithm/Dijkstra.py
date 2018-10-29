@@ -8,7 +8,7 @@ class Dijkstra_Algorithm():
         self.prev = {}
 
 
-    # 1. Shortest path tarting vertex s
+    # 1. Shortest path starting vertex s
     def dijkstra(self, s, v): 
         self.setup(s)
         self.shortest(s)
