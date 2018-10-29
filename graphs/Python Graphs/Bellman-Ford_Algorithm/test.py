@@ -1,5 +1,5 @@
 from Graph import *
-from Dijkstra import *
+from BellmanFord import *
 
 def main():
     graph = Graph()
@@ -15,15 +15,17 @@ def main():
     graph.add_edge("A", "B")
     graph.add_edge("A", "C") 
     graph.add_edge("B", "D")
-    graph.add_edge("C", "E")
-    graph.add_edge("D", "C")
+    graph.add_edge("B", "E")
+    graph.add_edge("C", "D")
+    graph.add_edge("E", "D")
 
     # Edge weights
-    graph.add_weight("A", "B", 5)
-    graph.add_weight("A", "C", 10)
-    graph.add_weight("B", "D", 1)
-    graph.add_weight("C", "E", 1)
-    graph.add_weight("D", "C", 1)
+    graph.add_weight("A", "B", 2)
+    graph.add_weight("A", "C", 2) 
+    graph.add_weight("B", "D", 0)
+    graph.add_weight("B", "E", -1)
+    graph.add_weight("C", "D", -1)
+    graph.add_weight("E", "D",-2)
 
     # Print Curent Vertices and Edges
     print("Vertices:", graph.get_vertices())
@@ -38,10 +40,8 @@ def main():
     E = graph.get_adjacent()
     W = graph.edge_weight
 
-    # Dijkstra's Aglorithm: Shortest path from u to v
-    path = Dijkstra_Algorithm(V, Adj, edge_weight)
-    path.dijkstra("A", "E")
-    print(path.chart)
+    # Bellman-Ford Algorithm: Shortest path from u to v w/neg
+    ford = Bellman_Ford(V, E, W) # From A to all nodes
     
 
 main()
