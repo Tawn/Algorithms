@@ -15,11 +15,11 @@ public class Coin_Change_Problem {
 		for(int coin : coins) { 
 			for(int amt = 1; amt <= amount; amt++) { // Start from amt: 1
 				printArray(comb);
-				System.out.println("amt: " + amt + " coin: " + coin);
 				if (amt >= coin) {
 					comb[amt] += comb[amt-coin];
 				}
 			}
+			System.out.println();
 		}
 		return comb[amount];
 	}
