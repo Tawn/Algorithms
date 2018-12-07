@@ -21,4 +21,7 @@ public class Knapsack {
 			if(result < max) result = max;		
 		}
 		
-		
+		return result;
+ 	}
+
+}
